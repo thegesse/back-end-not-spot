@@ -33,6 +33,8 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of(
             "https://thegesse.github.io", // prod temporaire, juste le temps de l'eval
             "https://app.kaillou.de",     // TODO creer un sous domaine app.kaillou.de
+            "http://localhost:3000",
+            "http://localhost:8080", //local aussi
         ));
         
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS","PATCH"));
