@@ -36,7 +36,7 @@ public class AuthService {
             throw new BadCredentialsException("Invalid credentials");
         }
 
-        return new UserDTO(user.getId(), user.getUsername(), user.getEmail());
+        return new UserDTO(user.getId(), user.getUsername(), user.getEmail(), user.getRole().name());
     }
 
 

@@ -2,6 +2,7 @@ package com.goose.notspot.service.userService;
 
 import com.goose.notspot.model.playlists.Playlist;
 import com.goose.notspot.model.user.DTO.UserDTO;
+import com.goose.notspot.model.user.Roles;
 import com.goose.notspot.model.user.User;
 import com.goose.notspot.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,6 +32,7 @@ public class UserCreationService {
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
+        user.setRole(Roles.USER);
 
         //default playlist creation and assigning it to the current user
         Playlist likedSongs = new Playlist();
@@ -41,6 +43,6 @@ public class UserCreationService {
 
         User savedUser = userRepository.save(user);
 
-        return new UserDTO(savedUser.getId(), savedUser.getUsername(), savedUser.getEmail());
+        return new UserDTO(savedUser.getId(), savedUser.getUsername(), savedUser.getEmail(), savedUser.getRole().name());
     }
 }

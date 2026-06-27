@@ -20,7 +20,7 @@ public class ChangeNameService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         if(user.getUsername().equals(username)) {
-            return new UserDTO(user.getId(), user.getUsername(), user.getEmail());
+            return new UserDTO(user.getId(), user.getUsername(), user.getEmail(), user.getRole().name());
 
         }
 
@@ -31,6 +31,6 @@ public class ChangeNameService {
 
         User savedUser = userRepository.save(user);
 
-        return new UserDTO(savedUser.getId(), savedUser.getUsername(), savedUser.getEmail());
+        return new UserDTO(savedUser.getId(), savedUser.getUsername(), savedUser.getEmail(), user.getRole().name());
     }
 }
